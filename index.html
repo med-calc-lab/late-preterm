@@ -178,18 +178,19 @@ button{
 Не заменяет клиническое решение врача.
 </div>
 
-<div class="section-title">Антропометрия</div>
+<div class="section-title">Осложнения и факторы риска</div>
 
+<div class="grid-2">
 <div class="form-row">
-<label for="x1">1. Индекс массы тела (ИМТ), кг/м² — x₁</label>
-<input id="x1" type="number" min="0.1" max="100" step="0.1" placeholder="Например: 27.5">
-<div class="helper-text">Система автоматически переведёт значение в код (0–4)</div>
+<label for="x1">1. Преждевременный разрыв плодных оболочек (ПРПО) — x₁</label>
+<select id="x1">
+<option value="" selected disabled>Выберите</option>
+<option value="0">Нет (0)</option><option value="1">Да (1)</option>
+</select>
 </div>
 
-<div class="section-title">Инфекционный анамнез</div>
-
 <div class="form-row">
-<label for="x2">2. Новая коронавирусная инфекция (COVID-19) — x₂</label>
+<label for="x2">2. Код НКВИ (гестационный срок заболевания COVID-19) — x₂</label>
 <select id="x2">
 <option value="" selected disabled>Выберите вариант</option>
 <option value="0">Не болела (0)</option>
@@ -201,15 +202,23 @@ button{
 </div>
 
 <div class="form-row">
-<label for="x9">9. Острая респираторная инфекция — x₉</label>
-<select id="x9">
+<label for="x3">3. Острая респираторная инфекция (ОРВИ) — x₃</label>
+<select id="x3">
 <option value="" selected disabled>Выберите вариант</option>
 <option value="0">Нет (0)</option><option value="1">Да (1)</option>
 </select>
 </div>
 
 <div class="form-row">
-<label for="x5">5. Инфекция (уреаплазмоз, микоплазмоз, токсоплазмоз, хламидиоз) — x₅</label>
+<label for="x4">4. Инфекция (уреаплазмоз, хламидиоз, токсоплазмоз, герпес) — x₄</label>
+<select id="x4">
+<option value="" selected disabled>Выберите вариант</option>
+<option value="0">Нет (0)</option><option value="1">Да (1)</option>
+</select>
+</div>
+
+<div class="form-row">
+<label for="x5">5. Инфекция мочевыводящих путей, МКБ — x₅</label>
 <select id="x5">
 <option value="" selected disabled>Выберите вариант</option>
 <option value="0">Нет (0)</option><option value="1">Да (1)</option>
@@ -217,43 +226,36 @@ button{
 </div>
 
 <div class="form-row">
-<label for="x7">7. Инфекция мочевыводящих путей — x₇</label>
-<select id="x7">
-<option value="" selected disabled>Выберите вариант</option>
-<option value="0">Нет (0)</option><option value="1">Да (1)</option>
-</select>
-</div>
-
-<div class="section-title">Осложнения и факторы риска</div>
-
-<div class="grid-2">
-<div class="form-row">
-<label for="x3">3. Преждевременный разрыв плодных оболочек— x₃</label>
-<select id="x3">
-<option value="" selected disabled>Выберите</option>
-<option value="0">Нет (0)</option><option value="1">Да (1)</option>
-</select>
-</div>
-
-<div class="form-row">
-<label for="x4">4. Другие плацентарные нарушения — x₄</label>
-<select id="x4">
-<option value="" selected disabled>Выберите</option>
-<option value="0">Нет (0)</option><option value="1">Да (1)</option>
-</select>
-</div>
-
-<div class="form-row">
-<label for="x6">6. Недостаточный рост плода, требующий предоставления медицинской помощи матери — x₆</label>
+<label for="x6">6. Угроза прерывания беременности — x₆</label>
 <select id="x6">
 <option value="" selected disabled>Выберите</option>
 <option value="0">Нет (0)</option><option value="1">Да (1)</option>
 </select>
 </div>
+</div>
+
+<div class="section-title">Антропометрия</div>
 
 <div class="form-row">
-<label for="x8">8. Угроза прерывания беременности— x₈</label>
+<label for="x7">7. Индекс массы тела (ИМТ), кг/м² — x</label>
+<input id="x7" type="number" min="0.1" max="100" step="0.1" placeholder="Например: 27.5">
+<div class="helper-text">Система автоматически переведёт значение в код (0–4)</div>
+</div>
+
+<div class="section-title">Плацентарные нарушения и развитие плода</div>
+
+<div class="grid-2">
+<div class="form-row">
+<label for="x8">8. Другие плацентарные нарушения — x₈</label>
 <select id="x8">
+<option value="" selected disabled>Выберите</option>
+<option value="0">Нет (0)</option><option value="1">Да (1)</option>
+</select>
+</div>
+
+<div class="form-row">
+<label for="x9">9. Недостаточный рост плода, требующий предоставления медицинской помощи матери — x₉</label>
+<select id="x9">
 <option value="" selected disabled>Выберите</option>
 <option value="0">Нет (0)</option><option value="1">Да (1)</option>
 </select>
@@ -281,7 +283,60 @@ button{
 </thead>
 <tbody>
 <tr>
-    <td rowspan="6" class="var-name">x₁ — Код ИМТ<br>(индекс массы тела)</td>
+    <td class="var-name">x₁ — Преждевременный разрыв плодных оболочек (ПРПО)</td>
+    <td><span class="code-badge">0</span> / <span class="code-badge">1</span></td>
+    <td class="code-desc">0 — нет, 1 — да</td>
+</tr>
+
+<tr>
+    <td rowspan="6" class="var-name">x₂ — Код НКВИ<br>(гестационный срок заболевания COVID-19)</td>
+    <td><span class="code-badge">0</span></td>
+    <td class="code-desc">Не болела</td>
+</tr>
+<tr>
+    <td><span class="code-badge">2</span></td>
+    <td class="code-desc">6 – 12 недель беременности</td>
+</tr>
+<tr>
+    <td><span class="code-badge">3</span></td>
+    <td class="code-desc">13 – 27 недель беременности</td>
+</tr>
+<tr>
+    <td><span class="code-badge">4</span></td>
+    <td class="code-desc">0 – 6 недель или 28 – 40 недель<br>(критические периоды)</td>
+</tr>
+<tr>
+    <td colspan="2" class="code-desc" style="font-style:italic;color:var(--muted)">
+        Код 4 присваивается I и III триместрам как наиболее критичным
+    </td>
+</tr>
+
+<tr>
+    <td class="var-name">x₃ — Острая респираторная инфекция (ОРВИ)</td>
+    <td><span class="code-badge">0</span> / <span class="code-badge">1</span></td>
+    <td class="code-desc">0 — нет, 1 — да</td>
+</tr>
+
+<tr>
+    <td class="var-name">x₄ — Инфекция (уреаплазмоз, хламидиоз, токсоплазмоз, герпес)</td>
+    <td><span class="code-badge">0</span> / <span class="code-badge">1</span></td>
+    <td class="code-desc">0 — нет, 1 — да</td>
+</tr>
+
+<tr>
+    <td class="var-name">x₅ — Инфекция мочевыводящих путей, МКБ</td>
+    <td><span class="code-badge">0</span> / <span class="code-badge">1</span></td>
+    <td class="code-desc">0 — нет, 1 — да</td>
+</tr>
+
+<tr>
+    <td class="var-name">x₆ — Угроза прерывания беременности</td>
+    <td><span class="code-badge">0</span> / <span class="code-badge">1</span></td>
+    <td class="code-desc">0 — нет, 1 — да</td>
+</tr>
+
+<tr>
+    <td rowspan="6" class="var-name">x₇ — Код ИМТ<br>(индекс массы тела)</td>
     <td><span class="code-badge">0</span></td>
     <td class="code-desc">18,5 – 25 кг/м² (нормальная масса тела)</td>
 </tr>
@@ -308,66 +363,13 @@ button{
 </tr>
 
 <tr>
-    <td rowspan="5" class="var-name">x₂ — Новая коронавирусная инфекция (COVID-19)</td>
-    <td><span class="code-badge">0</span></td>
-    <td class="code-desc">Не болела</td>
-</tr>
-<tr>
-    <td><span class="code-badge">2</span></td>
-    <td class="code-desc">6 – 12 недель беременности</td>
-</tr>
-<tr>
-    <td><span class="code-badge">3</span></td>
-    <td class="code-desc">13 – 27 недель беременности</td>
-</tr>
-<tr>
-    <td><span class="code-badge">4</span></td>
-    <td class="code-desc">0 – 6 недель или 28 – 40 недель<br>(критические периоды)</td>
-</tr>
-<tr>
-    <td colspan="2" class="code-desc" style="font-style:italic;color:var(--muted)">
-        Код 4 присваивается I и III триместрам как наиболее критичным
-    </td>
-</tr>
-
-<tr>
-    <td class="var-name">x₃ — Преждевременный разрыв плодных оболочек</td>
-    <td><span class="code-badge">0</span> / <span class="code-badge">1</span></td>
-    <td class="code-desc">0 — нет, 1 — да (преждевременное излитие околоплодных вод)</td>
-</tr>
-
-<tr>
-    <td class="var-name">x₄ — Другие плацентарные нарушения</td>
+    <td class="var-name">x₈ — Другие плацентарные нарушения</td>
     <td><span class="code-badge">0</span> / <span class="code-badge">1</span></td>
     <td class="code-desc">0 — нет, 1 — да</td>
 </tr>
 
 <tr>
-    <td class="var-name">x₅ — Инфекция (уреаплазмоз, микоплазмоз, токсоплазмоз, хламидиоз)</td>
-    <td><span class="code-badge">0</span> / <span class="code-badge">1</span></td>
-    <td class="code-desc">0 — нет, 1 — да</td>
-</tr>
-
-<tr>
-    <td class="var-name">x₆ — Недостаточный рост плода, требующий предоставления медицинской помощи матери</td>
-    <td><span class="code-badge">0</span> / <span class="code-badge">1</span></td>
-    <td class="code-desc">0 — нет, 1 — да</td>
-</tr>
-
-<tr>
-    <td class="var-name">x₇ — Инфекция мочевыводящих путей</td>
-    <td><span class="code-badge">0</span> / <span class="code-badge">1</span></td>
-    <td class="code-desc">0 — нет, 1 — да</td>
-</tr>
-
-<tr>
-    <td class="var-name">x₈ — Угроза прерывания беременности</td>
-    <td><span class="code-badge">0</span> / <span class="code-badge">1</span></td>
-    <td class="code-desc">0 — нет, 1 — да</td>
-</tr>
-
-<tr>
-    <td class="var-name">x₉ — Острая респираторная инфекция</td>
+    <td class="var-name">x₉ — Недостаточный рост плода, требующий предоставления медицинской помощи матери</td>
     <td><span class="code-badge">0</span> / <span class="code-badge">1</span></td>
     <td class="code-desc">0 — нет, 1 — да</td>
 </tr>
@@ -380,15 +382,15 @@ button{
 <script>
 const MODEL = {
     intercept: -0.23686,
-    x1_bmi: 0.33550,
-    x2_nkvi: 0.40773,
-    x3_prpo: 1.72196,
-    x4_placental: -0.73888,
-    x5_infection: 2.85379,
-    x6_growth: 1.70876,
-    x7_urinary: -1.08715,
-    x8_threat: 0.92675,
-    x9_orvi: -1.63527
+    x1_prpo: 1.72196,           // 1. ПРПО
+    x2_nkvi: 0.40773,           // 2. Код НКВИ
+    x3_orvi: -1.63527,          // 3. ОРВИ
+    x4_infection: 2.85379,      // 4. Уреаплазмоз, хламидиоз, токсоплазмоз, герпес
+    x5_urinary: -1.08715,       // 5. Инф.мочев.путей, МКБ
+    x6_threat: 0.92675,         // 6. Угроза прерыв.
+    x7_bmi: 0.33550,            // 7. Код ИМТ
+    x8_placental: -0.73888,     // 8. Другие плацентарные нарушения
+    x9_growth: 1.70876          // 9. Задержка разв.плода
 };
 
 function bmiCode(bmi){
@@ -407,38 +409,38 @@ function val(id){
 }
 
 function calculate(){
-    const bmi = Number(document.getElementById('x1').value);
+    const bmi = Number(document.getElementById('x7').value);
 
     if(!Number.isFinite(bmi) || bmi <= 0){
         alert("Введите корректное значение ИМТ.");
         return;
     }
 
-    const x1 = bmiCode(bmi);
+    const x1 = val("x1");
     const x2 = val("x2");
     const x3 = val("x3");
     const x4 = val("x4");
     const x5 = val("x5");
     const x6 = val("x6");
-    const x7 = val("x7");
+    const x7 = bmiCode(bmi);
     const x8 = val("x8");
     const x9 = val("x9");
 
-    if([x2,x3,x4,x5,x6,x7,x8,x9].some(v => v === null)){
+    if([x1,x2,x3,x4,x5,x6,x8,x9].some(v => v === null)){
         alert("Пожалуйста, заполните все поля.");
         return;
     }
 
     const z = MODEL.intercept
-        + MODEL.x1_bmi * x1
+        + MODEL.x1_prpo * x1
         + MODEL.x2_nkvi * x2
-        + MODEL.x3_prpo * x3
-        + MODEL.x4_placental * x4
-        + MODEL.x5_infection * x5
-        + MODEL.x6_growth * x6
-        + MODEL.x7_urinary * x7
-        + MODEL.x8_threat * x8
-        + MODEL.x9_orvi * x9;
+        + MODEL.x3_orvi * x3
+        + MODEL.x4_infection * x4
+        + MODEL.x5_urinary * x5
+        + MODEL.x6_threat * x6
+        + MODEL.x7_bmi * x7
+        + MODEL.x8_placental * x8
+        + MODEL.x9_growth * x9;
 
     const probability = 1 / (1 + Math.exp(-z));
     const percent = probability * 100;
@@ -457,10 +459,10 @@ function calculate(){
 
         <div class="methodology-note">
             <strong>Входные данные модели:</strong><br>
-            x₁ (Код ИМТ) = ${x1} &nbsp;|&nbsp; x₂ (НКВИ) = ${x2} &nbsp;|&nbsp; x₃ (Преждевременный разрыв плодных оболочек) = ${x3}<br>
-            x₄ (Др. плацентарные нар.) = ${x4} &nbsp;|&nbsp; x₅ (Инфекция) = ${x5}<br>
-            x₆ (Недостаточный рост плода, требующий предоставления медицинской помощи матери) = ${x6} &nbsp;|&nbsp; x₇ (Инф. мочевых путей) = ${x7}<br>
-            x₈ (Угроза прерывания беременности) = ${x8} &nbsp;|&nbsp; x₉ (ОРВИ) = ${x9}<br><br>
+            x₁ (ПРПО) = ${x1} &nbsp;|&nbsp; x₂ (Код НКВИ) = ${x2} &nbsp;|&nbsp; x₃ (ОРВИ) = ${x3}<br>
+            x₄ (Инфекция) = ${x4} &nbsp;|&nbsp; x₅ (Инф.мочев.путей) = ${x5}<br>
+            x₆ (Угроза прерыв.) = ${x6} &nbsp;|&nbsp; x₇ (Код ИМТ) = ${x7}<br>
+            x₈ (Др. плацентарные нар.) = ${x8} &nbsp;|&nbsp; x₉ (Недостаточный рост плода) = ${x9}<br><br>
             <strong>Линейный предиктор:</strong> z = ${z.toFixed(5)}<br>
             <strong>Формула:</strong> p = 1 / (1 + e<sup>−z</sup>) = ${percent.toFixed(4)}%<br><br>
             Результат следует интерпретировать в контексте клинической картины пациентки.
@@ -471,8 +473,8 @@ function calculate(){
 }
 
 function resetForm(){
-    document.getElementById("x1").value = "";
-    ["x2","x3","x4","x5","x6","x7","x8","x9"]
+    document.getElementById("x7").value = "";
+    ["x1","x2","x3","x4","x5","x6","x8","x9"]
         .forEach(id => document.getElementById(id).value = "");
 
     const result = document.getElementById("result");
