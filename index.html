@@ -89,8 +89,6 @@ button{
     background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:10px;
     padding:12px 14px;font-size:12px;line-height:1.5;margin-bottom:20px
 }
-
-/* Справочник кодировки - ИСПРАВЛЕНО */
 .coding-reference{
     margin-top:30px;padding:25px;background:#f8fafc;border-radius:var(--radius);
     border:1px solid var(--border)
@@ -101,44 +99,27 @@ button{
 }
 .coding-reference summary::-webkit-details-marker{display:none}
 .coding-reference summary::before{content:"📋";font-size:18px}
-.coding-reference[open] summary::before{content:"📖"}
-
-/* ИСПРАВЛЕННАЯ ТАБЛИЦА */
+.coding-reference[open] summary::before{content:""}
 .coding-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:15px;
-    font-size:13px;
-    table-layout:fixed; /* ФИКСИРУЕМ ШИРИНЫ КОЛОНОК */
+    width:100%;border-collapse:collapse;margin-top:15px;font-size:13px;
+    table-layout:fixed
 }
 .coding-table th{
     background:var(--primary);color:#fff;padding:10px 12px;text-align:left;
     font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.5px
 }
-.coding-table th:first-child{
-    border-radius:8px 0 0 0;
-    width:35%; /* ФИКСИРОВАННАЯ ШИРИНА ПЕРВОЙ КОЛОНКИ */
-}
-.coding-table th:nth-child(2){width:15%} /* ВТОРАЯ КОЛОНКА */
-.coding-table th:last-child{
-    border-radius:0 8px 0 0;
-    width:50% /* ТРЕТЬЯ КОЛОНКА */
-}
+.coding-table th:first-child{border-radius:8px 0 0 0;width:35%}
+.coding-table th:nth-child(2){width:15%}
+.coding-table th:last-child{border-radius:0 8px 0 0;width:50%}
 .coding-table td{
-    padding:10px 12px;
-    border-bottom:1px solid var(--border);
-    vertical-align:top;
-    word-wrap:break-word; /* ПЕРЕНОС ДЛИННЫХ СЛОВ */
-    overflow-wrap:break-word
+    padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;
+    word-wrap:break-word;overflow-wrap:break-word
 }
 .coding-table tr:last-child td{border-bottom:0}
 .coding-table tr:hover{background:#fff}
 .coding-table .var-name{
-    font-weight:600;
-    color:var(--primary-dark);
-    white-space:normal; /* РАЗРЕШАЕМ ПЕРЕНОС ТЕКСТА */
-    word-break:break-word;
-    line-height:1.4
+    font-weight:600;color:var(--primary-dark);
+    white-space:normal;word-break:break-word;line-height:1.4
 }
 .coding-table .code-badge{
     display:inline-block;background:#e0e7ff;color:var(--primary-dark);
@@ -150,7 +131,6 @@ button{
     margin-top:15px;padding:12px;background:#fff;border-left:3px solid var(--primary);
     border-radius:6px;font-size:12px;color:var(--muted);line-height:1.5
 }
-
 @media(max-width:600px){
     .grid-2{grid-template-columns:1fr}
     body{padding:10px}.content{padding:20px}header{padding:24px 18px}
@@ -178,19 +158,18 @@ button{
 Не заменяет клиническое решение врача.
 </div>
 
-<div class="section-title">Осложнения и факторы риска</div>
+<div class="section-title">Антропометрия</div>
 
-<div class="grid-2">
 <div class="form-row">
-<label for="x1">1. Преждевременный разрыв плодных оболочек (ПРПО) — x₁</label>
-<select id="x1">
-<option value="" selected disabled>Выберите</option>
-<option value="0">Нет (0)</option><option value="1">Да (1)</option>
-</select>
+<label for="x1">1. Индекс массы тела (ИМТ), кг/м² — x₁</label>
+<input id="x1" type="number" min="0.1" max="100" step="0.1" placeholder="Например: 27.5">
+<div class="helper-text">Система автоматически переведёт значение в код (0–4)</div>
 </div>
 
+<div class="section-title">Инфекционный анамнез</div>
+
 <div class="form-row">
-<label for="x2">2. Код НКВИ (гестационный срок заболевания COVID-19) — x₂</label>
+<label for="x2">2. Новая коронавирусная инфекция (НКВИ) — x₂</label>
 <select id="x2">
 <option value="" selected disabled>Выберите вариант</option>
 <option value="0">Не болела (0)</option>
@@ -202,23 +181,15 @@ button{
 </div>
 
 <div class="form-row">
-<label for="x3">3. Острая респираторная инфекция (ОРВИ) — x₃</label>
-<select id="x3">
+<label for="x9">9. Острая респираторная инфекция (ОРВИ) — x₉</label>
+<select id="x9">
 <option value="" selected disabled>Выберите вариант</option>
 <option value="0">Нет (0)</option><option value="1">Да (1)</option>
 </select>
 </div>
 
 <div class="form-row">
-<label for="x4">4. Инфекция (уреаплазмоз, хламидиоз, токсоплазмоз, герпес) — x₄</label>
-<select id="x4">
-<option value="" selected disabled>Выберите вариант</option>
-<option value="0">Нет (0)</option><option value="1">Да (1)</option>
-</select>
-</div>
-
-<div class="form-row">
-<label for="x5">5. Инфекция мочевыводящих путей, МКБ — x₅</label>
+<label for="x5">5. Инфекция (уреаплазмоз, хламидиоз, токсоплазмоз, герпес) — x₅</label>
 <select id="x5">
 <option value="" selected disabled>Выберите вариант</option>
 <option value="0">Нет (0)</option><option value="1">Да (1)</option>
@@ -226,36 +197,43 @@ button{
 </div>
 
 <div class="form-row">
-<label for="x6">6. Угроза прерывания беременности — x₆</label>
+<label for="x7">7. Инфекция мочевыводящих путей, МКБ — x</label>
+<select id="x7">
+<option value="" selected disabled>Выберите вариант</option>
+<option value="0">Нет (0)</option><option value="1">Да (1)</option>
+</select>
+</div>
+
+<div class="section-title">Осложнения и факторы риска</div>
+
+<div class="grid-2">
+<div class="form-row">
+<label for="x3">3. Преждевременный разрыв плодных оболочек (ПРПО) — x₃</label>
+<select id="x3">
+<option value="" selected disabled>Выберите</option>
+<option value="0">Нет (0)</option><option value="1">Да (1)</option>
+</select>
+</div>
+
+<div class="form-row">
+<label for="x4">4. Другие плацентарные нарушения — x</label>
+<select id="x4">
+<option value="" selected disabled>Выберите</option>
+<option value="0">Нет (0)</option><option value="1">Да (1)</option>
+</select>
+</div>
+
+<div class="form-row">
+<label for="x6">6. Задержка развития плода — x₆</label>
 <select id="x6">
 <option value="" selected disabled>Выберите</option>
 <option value="0">Нет (0)</option><option value="1">Да (1)</option>
 </select>
 </div>
-</div>
-
-<div class="section-title">Антропометрия</div>
 
 <div class="form-row">
-<label for="x7">7. Индекс массы тела (ИМТ), кг/м² — x</label>
-<input id="x7" type="number" min="0.1" max="100" step="0.1" placeholder="Например: 27.5">
-<div class="helper-text">Система автоматически переведёт значение в код (0–4)</div>
-</div>
-
-<div class="section-title">Плацентарные нарушения и развитие плода</div>
-
-<div class="grid-2">
-<div class="form-row">
-<label for="x8">8. Другие плацентарные нарушения — x₈</label>
+<label for="x8">8. Угроза прерывания беременности — x₈</label>
 <select id="x8">
-<option value="" selected disabled>Выберите</option>
-<option value="0">Нет (0)</option><option value="1">Да (1)</option>
-</select>
-</div>
-
-<div class="form-row">
-<label for="x9">9. Недостаточный рост плода, требующий предоставления медицинской помощи матери — x₉</label>
-<select id="x9">
 <option value="" selected disabled>Выберите</option>
 <option value="0">Нет (0)</option><option value="1">Да (1)</option>
 </select>
@@ -269,7 +247,6 @@ button{
 
 <div id="result"></div>
 
-<!-- СПРАВОЧНИК КОДИРОВКИ ПЕРЕМЕННЫХ -->
 <details class="coding-reference">
 <summary>Справочник кодировки переменных модели</summary>
 
@@ -283,60 +260,7 @@ button{
 </thead>
 <tbody>
 <tr>
-    <td class="var-name">x₁ — Преждевременный разрыв плодных оболочек (ПРПО)</td>
-    <td><span class="code-badge">0</span> / <span class="code-badge">1</span></td>
-    <td class="code-desc">0 — нет, 1 — да</td>
-</tr>
-
-<tr>
-    <td rowspan="6" class="var-name">x₂ — Код НКВИ<br>(гестационный срок заболевания COVID-19)</td>
-    <td><span class="code-badge">0</span></td>
-    <td class="code-desc">Не болела</td>
-</tr>
-<tr>
-    <td><span class="code-badge">2</span></td>
-    <td class="code-desc">6 – 12 недель беременности</td>
-</tr>
-<tr>
-    <td><span class="code-badge">3</span></td>
-    <td class="code-desc">13 – 27 недель беременности</td>
-</tr>
-<tr>
-    <td><span class="code-badge">4</span></td>
-    <td class="code-desc">0 – 6 недель или 28 – 40 недель<br>(критические периоды)</td>
-</tr>
-<tr>
-    <td colspan="2" class="code-desc" style="font-style:italic;color:var(--muted)">
-        Код 4 присваивается I и III триместрам как наиболее критичным
-    </td>
-</tr>
-
-<tr>
-    <td class="var-name">x₃ — Острая респираторная инфекция (ОРВИ)</td>
-    <td><span class="code-badge">0</span> / <span class="code-badge">1</span></td>
-    <td class="code-desc">0 — нет, 1 — да</td>
-</tr>
-
-<tr>
-    <td class="var-name">x₄ — Инфекция (уреаплазмоз, хламидиоз, токсоплазмоз, герпес)</td>
-    <td><span class="code-badge">0</span> / <span class="code-badge">1</span></td>
-    <td class="code-desc">0 — нет, 1 — да</td>
-</tr>
-
-<tr>
-    <td class="var-name">x₅ — Инфекция мочевыводящих путей, МКБ</td>
-    <td><span class="code-badge">0</span> / <span class="code-badge">1</span></td>
-    <td class="code-desc">0 — нет, 1 — да</td>
-</tr>
-
-<tr>
-    <td class="var-name">x₆ — Угроза прерывания беременности</td>
-    <td><span class="code-badge">0</span> / <span class="code-badge">1</span></td>
-    <td class="code-desc">0 — нет, 1 — да</td>
-</tr>
-
-<tr>
-    <td rowspan="6" class="var-name">x₇ — Код ИМТ<br>(индекс массы тела)</td>
+    <td rowspan="6" class="var-name">x₁ — Код ИМТ<br>(индекс массы тела)</td>
     <td><span class="code-badge">0</span></td>
     <td class="code-desc">18,5 – 25 кг/м² (нормальная масса тела)</td>
 </tr>
@@ -363,18 +287,78 @@ button{
 </tr>
 
 <tr>
-    <td class="var-name">x₈ — Другие плацентарные нарушения</td>
+    <td rowspan="5" class="var-name">x₂ — Новая коронавирусная инфекция (НКВИ)</td>
+    <td><span class="code-badge">0</span></td>
+    <td class="code-desc">Не болела</td>
+</tr>
+<tr>
+    <td><span class="code-badge">2</span></td>
+    <td class="code-desc">6 – 12 недель беременности</td>
+</tr>
+<tr>
+    <td><span class="code-badge">3</span></td>
+    <td class="code-desc">13 – 27 недель беременности</td>
+</tr>
+<tr>
+    <td><span class="code-badge">4</span></td>
+    <td class="code-desc">0 – 6 недель или 28 – 40 недель<br>(критические периоды)</td>
+</tr>
+<tr>
+    <td colspan="2" class="code-desc" style="font-style:italic;color:var(--muted)">
+        Код 4 присваивается I и III триместрам как наиболее критичным
+    </td>
+</tr>
+
+<tr>
+    <td class="var-name">x₃ — Преждевременный разрыв плодных оболочек (ПРПО)</td>
     <td><span class="code-badge">0</span> / <span class="code-badge">1</span></td>
     <td class="code-desc">0 — нет, 1 — да</td>
 </tr>
 
 <tr>
-    <td class="var-name">x₉ — Недостаточный рост плода, требующий предоставления медицинской помощи матери</td>
+    <td class="var-name">x₄ — Другие плацентарные нарушения</td>
+    <td><span class="code-badge">0</span> / <span class="code-badge">1</span></td>
+    <td class="code-desc">0 — нет, 1 — да</td>
+</tr>
+
+<tr>
+    <td class="var-name">x₅ — Инфекция (уреаплазмоз, хламидиоз, токсоплазмоз, герпес)</td>
+    <td><span class="code-badge">0</span> / <span class="code-badge">1</span></td>
+    <td class="code-desc">0 — нет, 1 — да</td>
+</tr>
+
+<tr>
+    <td class="var-name">x₆ — Задержка развития плода</td>
+    <td><span class="code-badge">0</span> / <span class="code-badge">1</span></td>
+    <td class="code-desc">0 — нет, 1 — да</td>
+</tr>
+
+<tr>
+    <td class="var-name">x₇ — Инфекция мочевыводящих путей, МКБ</td>
+    <td><span class="code-badge">0</span> / <span class="code-badge">1</span></td>
+    <td class="code-desc">0 — нет, 1 — да</td>
+</tr>
+
+<tr>
+    <td class="var-name">x₈ — Угроза прерывания беременности</td>
+    <td><span class="code-badge">0</span> / <span class="code-badge">1</span></td>
+    <td class="code-desc">0 — нет, 1 — да</td>
+</tr>
+
+<tr>
+    <td class="var-name">x₉ — Острая респираторная инфекция (ОРВИ)</td>
     <td><span class="code-badge">0</span> / <span class="code-badge">1</span></td>
     <td class="code-desc">0 — нет, 1 — да</td>
 </tr>
 </tbody>
 </table>
+
+<div class="coding-note">
+<strong>Целевая переменная:</strong> y = 1 — преждевременные роды (событие), y = 0 — доношенные роды (не-событие).<br>
+<strong>Метод построения модели:</strong> пошаговая логистическая регрессия GLS (Generalized Linear Models), пакет Statistica.<br>
+<strong>Качество модели:</strong> AUC = 0,8244 (отличная дискриминация). Оптимальный порог по индексу Юдена: 0,424.
+</div>
+</details>
 
 </div>
 </div>
@@ -382,15 +366,15 @@ button{
 <script>
 const MODEL = {
     intercept: -0.23686,
-    x1_prpo: 1.72196,           // 1. ПРПО
-    x2_nkvi: 0.40773,           // 2. Код НКВИ
-    x3_orvi: -1.63527,          // 3. ОРВИ
-    x4_infection: 2.85379,      // 4. Уреаплазмоз, хламидиоз, токсоплазмоз, герпес
-    x5_urinary: -1.08715,       // 5. Инф.мочев.путей, МКБ
-    x6_threat: 0.92675,         // 6. Угроза прерыв.
-    x7_bmi: 0.33550,            // 7. Код ИМТ
-    x8_placental: -0.73888,     // 8. Другие плацентарные нарушения
-    x9_growth: 1.70876          // 9. Задержка разв.плода
+    x1_bmi: 0.33550,           // x₁ — Код ИМТ
+    x2_nkvi: 0.40773,          // x₂ — Код НКВИ
+    x3_prpo: 1.72196,          // x — ПРПО
+    x4_placental: -0.73888,    // x₄ — Другие плацентарные нарушения
+    x5_infection: 2.85379,     // x₅ — Уреаплазмоз, хламидиоз, токсоплазмоз, герпес
+    x6_growth: 1.70876,        // x₆ — Задержка развития плода
+    x7_urinary: -1.08715,      // x₇ — Инфекция мочевыводящих путей, МКБ
+    x8_threat: 0.92675,        // x₈ — Угроза прерывания
+    x9_orvi: -1.63527          // x₉ — ОРВИ
 };
 
 function bmiCode(bmi){
@@ -409,38 +393,39 @@ function val(id){
 }
 
 function calculate(){
-    const bmi = Number(document.getElementById('x7').value);
+    const bmi = Number(document.getElementById('x1').value);
 
     if(!Number.isFinite(bmi) || bmi <= 0){
         alert("Введите корректное значение ИМТ.");
         return;
     }
 
-    const x1 = val("x1");
-    const x2 = val("x2");
-    const x3 = val("x3");
-    const x4 = val("x4");
-    const x5 = val("x5");
-    const x6 = val("x6");
-    const x7 = bmiCode(bmi);
-    const x8 = val("x8");
-    const x9 = val("x9");
+    const x1 = bmiCode(bmi);     // x₁ — Код ИМТ
+    const x2 = val("x2");        // x₂ — Код НКВИ
+    const x3 = val("x3");        // x₃ — ПРПО
+    const x4 = val("x4");        // x₄ — Другие плацентарные нарушения
+    const x5 = val("x5");        // x₅ — Уреаплазмоз...
+    const x6 = val("x6");        // x₆ — Задержка развития плода
+    const x7 = val("x7");        // x₇ — Инфекция мочевыводящих путей
+    const x8 = val("x8");        // x — Угроза прерывания
+    const x9 = val("x9");        // x — ОРВИ
 
-    if([x1,x2,x3,x4,x5,x6,x8,x9].some(v => v === null)){
+    if([x2,x3,x4,x5,x6,x7,x8,x9].some(v => v === null)){
         alert("Пожалуйста, заполните все поля.");
         return;
     }
 
+    // Формула логистической регрессии с правильным порядком
     const z = MODEL.intercept
-        + MODEL.x1_prpo * x1
+        + MODEL.x1_bmi * x1
         + MODEL.x2_nkvi * x2
-        + MODEL.x3_orvi * x3
-        + MODEL.x4_infection * x4
-        + MODEL.x5_urinary * x5
-        + MODEL.x6_threat * x6
-        + MODEL.x7_bmi * x7
-        + MODEL.x8_placental * x8
-        + MODEL.x9_growth * x9;
+        + MODEL.x3_prpo * x3
+        + MODEL.x4_placental * x4
+        + MODEL.x5_infection * x5
+        + MODEL.x6_growth * x6
+        + MODEL.x7_urinary * x7
+        + MODEL.x8_threat * x8
+        + MODEL.x9_orvi * x9;
 
     const probability = 1 / (1 + Math.exp(-z));
     const percent = probability * 100;
@@ -459,12 +444,13 @@ function calculate(){
 
         <div class="methodology-note">
             <strong>Входные данные модели:</strong><br>
-            x₁ (ПРПО) = ${x1} &nbsp;|&nbsp; x₂ (Код НКВИ) = ${x2} &nbsp;|&nbsp; x₃ (ОРВИ) = ${x3}<br>
-            x₄ (Инфекция) = ${x4} &nbsp;|&nbsp; x₅ (Инф.мочев.путей) = ${x5}<br>
-            x₆ (Угроза прерыв.) = ${x6} &nbsp;|&nbsp; x₇ (Код ИМТ) = ${x7}<br>
-            x₈ (Др. плацентарные нар.) = ${x8} &nbsp;|&nbsp; x₉ (Недостаточный рост плода) = ${x9}<br><br>
+            x₁ (Код ИМТ) = ${x1} &nbsp;|&nbsp; x₂ (НКВИ) = ${x2} &nbsp;|&nbsp; x₃ (ПРПО) = ${x3}<br>
+            x₄ (Др. плацентарные нар.) = ${x4} &nbsp;|&nbsp; x₅ (Инфекция) = ${x5}<br>
+            x₆ (Задержка развития плода) = ${x6} &nbsp;|&nbsp; x₇ (Инф. мочевых путей) = ${x7}<br>
+            x (Угроза прерывания) = ${x8} &nbsp;|&nbsp; x₉ (ОРВИ) = ${x9}<br><br>
             <strong>Линейный предиктор:</strong> z = ${z.toFixed(5)}<br>
             <strong>Формула:</strong> p = 1 / (1 + e<sup>−z</sup>) = ${percent.toFixed(4)}%<br><br>
+            Коэффициенты взяты из таблицы Parameter estimates (Statistica, метод GLS).
             Результат следует интерпретировать в контексте клинической картины пациентки.
         </div>
     </div>`;
@@ -473,8 +459,8 @@ function calculate(){
 }
 
 function resetForm(){
-    document.getElementById("x7").value = "";
-    ["x1","x2","x3","x4","x5","x6","x8","x9"]
+    document.getElementById("x1").value = "";
+    ["x2","x3","x4","x5","x6","x7","x8","x9"]
         .forEach(id => document.getElementById(id).value = "");
 
     const result = document.getElementById("result");
